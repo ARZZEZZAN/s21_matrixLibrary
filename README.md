@@ -42,7 +42,9 @@ In this project you will implement your own library for processing numerical mat
 
 # Chapter II
 
-## Historical background
+## Information
+
+### Historical background
 
 The first mentions of matrices (or as they were called then - "magic squares") were found in ancient China. \
 They became famous in the middle of the 18th century thanks to the work of the famous mathematician Gabriel Cramer, who published his work "Introduction to the Analysis of Algebraic Curves", which described a fundamentally new algorithm for solving systems of linear equations. \
