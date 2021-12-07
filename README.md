@@ -121,6 +121,13 @@ A = 0 4 5
 ### Matrix structure in C language:
 
 ```c
+typedef enum {
+    CORRECT_MATRIX = 0,
+    INCORRECT_MATRIX = 1,
+    IDENTITY_MATRIX = 2,
+    ZERO_MATRIX = 3
+} matrix_type_t;
+
 typedef struct matrix_struct {
 	double** matrix;
 	int rows;
@@ -128,7 +135,22 @@ typedef struct matrix_struct {
 } matrix_t;
 ```
 
+The matrix_type field defines the matrix type, CORRECT_MATRIX - the correct matrix, INCORRECT_MATRIX - in case of errors in actions with matrices, IDENTITY_MATRIX - a identity matrix, ZERO_MATRIX - a null matrix.
+The filling of the matrix in the case of the INCORRECT_MATRIX type is not defined.
+
 ## Matrix operations
+
+### Creating matrices (create_matrix)
+
+```c
+matrix_t s21_create_matrix(int rows, int columns);
+```
+
+### Cleaning of matrices (remove_matrix)
+
+```c
+void matrix_t s21_remove_matrix(matrix_t *A);
+```
 
 ### Matrix comparison (eq_matrix)
 
@@ -141,7 +163,7 @@ int s21_eq_matrix(matrix_t *A, matrix_t *B);
 
 The matrices A, B are equal |A = B| if they have the same dimensions and the corresponding elements are identical, thus for all i and j: A(i,j) = B(i,j)
 
-### Adding (sum_matrix) and subtracting matrices(sub_matrix)
+### Adding (sum_matrix) and subtracting matrices (sub_matrix)
 
 ```c
 matrix_t s21_sum_matrix(matrix_t *A, matrix_t *B);
@@ -159,11 +181,11 @@ The difference of two matrices A = m × n and B = m × n of the same size is a m
             0 0 6   3 4 1   3 4 7
 ```
 
-### Matrix multiplication by scalar (mul_number). Multiplication of two matrices (mul_matrix).
+### Matrix multiplication by scalar (mult_number). Multiplication of two matrices (mult_matrix)
 
 ```c
-matrix_t s21_mul_number(matrix_t *A, double number);
-matrix_t s21_mul_matrix(matrix_t *A, matrix_t *B);
+matrix_t s21_mult_number(matrix_t *A, double number);
+matrix_t s21_mult_matrix(matrix_t *A, matrix_t *B);
 ```
 
 The product of the matrix A = m × n by the number λ is the matrix B = m × n = λ × A whose elements are defined by the equations B = λ × A(i,j).
@@ -209,6 +231,9 @@ A = A^T = 2 5 = 4 5 6
           3 6
 ```
 ### Minor of matrix and matrix of algebraic complements (calc_complements)
+```c
+matrix_t s21_calc_complements(matrix_t *A);
+```
 
 Minor M(i,j) is a (n-1)-order determinant obtained by deleting out the i-th row and the j-th column from the matrix A.
 
@@ -338,6 +363,9 @@ Implement basic operations with matrices (partially described [above](#matrix-op
 - The library must be developed according to the principles of structured programming;
 - Use prefix s21_ before each function
 - Prepare full coverage of library functions code with unit-tests using the Check library
-- Provide a Makefile for building the library and tests (with targets all, clean, test, s21_matrix.a)
+- Unit tests must cover at least 80% of each function (checked using gcov)  
+- Provide a Makefile for building the library and tests (with targets all, clean, test, s21_matrix.a, gcov_report)
+- The gcov_report target should generate a gcov report in the form of an html page. Unit tests must be run with gcov flags to do this 
 - The matrix must be implemented as the structure described [above](#matrix-structure-in-c-language)
+- Verifiable accuracy of the fractional part is up to 6 decimal places
 
