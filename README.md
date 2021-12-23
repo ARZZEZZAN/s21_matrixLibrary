@@ -134,6 +134,7 @@ typedef struct matrix_struct {
 	double** matrix;
 	int rows;
 	int columns;
+    matrix_type_t matrix_type;
 } matrix_t;
 ```
 
@@ -147,6 +148,8 @@ The filling of the matrix in the case of the INCORRECT_MATRIX type is not define
 ```c
 matrix_t s21_create_matrix(int rows, int columns);
 ```
+
+The matrix_type field must be initialized with the ZERO_MATRIX value.
 
 ### Cleaning of matrices (remove_matrix)
 

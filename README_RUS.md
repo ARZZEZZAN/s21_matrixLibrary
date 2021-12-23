@@ -145,6 +145,8 @@ typedef struct matrix_struct {
 matrix_t s21_create_matrix(int rows, int columns);
 ```
 
+Поле matrix_type должно инициализироваться значением ZERO_MATRIX.
+
 ### Очистка матриц (remove_matrix)
 
 ```c
