@@ -131,9 +131,9 @@ typedef enum {
 } matrix_type_t;
 
 typedef struct matrix_struct {
-	double** matrix;
-	int rows;
-	int columns;
+    double** matrix;
+    int rows;
+    int columns;
     matrix_type_t matrix_type;
 } matrix_t;
 ```
@@ -204,9 +204,9 @@ B = 2 × A = 2 × 0 4 2 = 0 8 4
 The product of A = m × k by B = k × n is a matrix C = m × n = A × B of size m × n whose elements are defined by the equation C(i,j) = A(i,1) × B(1,j) + A(i,2) × B(2,j) + ... + A(i,k) × B(k,j).
 
 ```
-            1 4    1 -1  1    5  5  9   
-C = A × B = 2 5  × 2  3  4 = 11  9 19 
-            3 6              17 13 29
+            1 4    1 -1  1    9 11 17   
+C = A × B = 2 5  × 2  3  4 = 12 13 22
+            3 6              15 15 27
 ```
 The components of matrix C are calculated as follows:
 
@@ -302,6 +302,8 @@ A = 4 5 6
 |A| = 1 × (45 - 48) - 2 × (36 - 42) + 3 × (32 - 35) = -3 + 12 + (-9) = 0
 |A| = 0
 ```
+
+If it is impossible to calculate the determinant of the given matrix, the function must return the value NAN.
 
 ### Inverse of the matrix (inverse_matrix)
 
