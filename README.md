@@ -154,7 +154,7 @@ The matrix_type field must be initialized with the ZERO_MATRIX value.
 ### Cleaning of matrices (remove_matrix)
 
 ```c
-void matrix_t s21_remove_matrix(matrix_t *A);
+void s21_remove_matrix(matrix_t *A);
 ```
 
 ### Matrix comparison (eq_matrix)
@@ -167,6 +167,8 @@ int s21_eq_matrix(matrix_t *A, matrix_t *B);
 ```
 
 The matrices A, B are equal |A = B| if they have the same dimensions and the corresponding elements are identical, thus for all i and j: A(i,j) = B(i,j)
+
+The comparison must be up to and including 7 decimal places.
 
 ### Adding (sum_matrix) and subtracting matrices (sub_matrix)
 
@@ -211,15 +213,15 @@ C = A × B = 2 5  × 2  3  4 = 12 13 22
 The components of matrix C are calculated as follows:
 
 ```
-C(1,1) = A(1,1) × B(1,1) + A(1,2) × B(2,1) = 1 × 1 + 2 × 2 = 1 + 4 = 5
-C(1,2) = A(1,1) × B(1,2) + A(1,2) × B(2,2) = 1 × (-1) + 2 × 3 = (-1) + 6 = 5
-C(1,3) = A(1,1) × B(1,3) + A(1,2) × B(2,3) = 1 × 1 + 2 × 4 = 1 + 8 = 9
-C(2,1) = A(2,1) × B(1,1) + A(2,2) × B(2,1) = 3 × 1 + 4 × 2 = 3 + 8 = 11
-C(2,2) = A(2,1) × B(1,2) + A(2,2) × B(2,2) = 3 × (-1) + 4 × 3 = (-3) + 12 = 9
-C(2,3) = A(2,1) × B(1,3) + A(2,2) × B(2,3) = 3 × 1 + 4 × 4 = 3 + 16 = 19
-C(3,1) = A(3,1) × B(1,1) + A(3,2) × B(2,1) = 5 × 1 + 6 × 2 = 5 + 12 = 17
-C(3,2) = A(3,1) × B(1,2) + A(3,2) × B(2,2) = 5 × (-1) + 6 × 3 = (-5) + 18 = 13
-C(3,3) = A(3,1) × B(1,3) + A(3,2) × B(2,3) = 5 × 1 + 6 × 4 = 5 + 24 = 29			
+C(1,1) = A(1,1) × B(1,1) + A(1,2) × B(2,1) = 1 × 1 + 4 × 2 = 1 + 8 = 9
+C(1,2) = A(1,1) × B(1,2) + A(1,2) × B(2,2) = 1 × (-1) + 4 × 3 = (-1) + 12 = 11
+C(1,3) = A(1,1) × B(1,3) + A(1,2) × B(2,3) = 1 × 1 + 4 × 4 = 1 + 16 = 17
+C(2,1) = A(2,1) × B(1,1) + A(2,2) × B(2,1) = 2 × 1 + 5 × 2 = 2 + 10 = 12
+C(2,2) = A(2,1) × B(1,2) + A(2,2) × B(2,2) = 2 × (-1) + 5 × 3 = (-2) + 15 = 13
+C(2,3) = A(2,1) × B(1,3) + A(2,2) × B(2,3) = 2 × 1 + 5 × 4 = 2 + 20 = 22
+C(3,1) = A(3,1) × B(1,1) + A(3,2) × B(2,1) = 3 × 1 + 6 × 2 = 3 + 12 = 15
+C(3,2) = A(3,1) × B(1,2) + A(3,2) × B(2,2) = 3 × (-1) + 6 × 3 = (-3) + 18 = 15
+C(3,3) = A(3,1) × B(1,3) + A(3,2) × B(2,3) = 3 × 1 + 6 × 4 = 3 + 24 = 27			
 ```
 
 ### Matrix transpose (transpose)
