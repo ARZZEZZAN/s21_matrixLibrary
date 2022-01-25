@@ -269,9 +269,7 @@ M = -4 -14  -8
     -8   2   4
 ```
 
-The algebraic complement of a matrix element is the value of the minor multiplied by -1.
-
-```M. = 2```
+The algebraic complement of a matrix element is the value of the minor multiplied by -1^(i+j).
 
 The matrix of algebraic complement will look like this:
 
