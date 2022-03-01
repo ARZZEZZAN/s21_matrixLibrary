@@ -1,5 +1,9 @@
 # s21_matrix  
 
+> При старте работы над проектом просим вас постараться хронометрировать время работы над проектом.
+> По завершении работы над проектом просим вас ответить на два вопроса [в этом опросе](https://forms.gle/vpUwLY2KyV1B1B3o9)
+
+
 Implementation of the matrix.h library.   
 
 The russian version of the task can be found in the repository.
