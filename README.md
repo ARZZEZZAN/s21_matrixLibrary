@@ -127,24 +127,33 @@ A = 0 4 5
 ### Matrix structure in C language:
 
 ```c
+typedef enum {
+    CORRECT_MATRIX = 0,
+    INCORRECT_MATRIX = 1,
+    IDENTITY_MATRIX = 2,
+    ZERO_MATRIX = 3
+} matrix_type_t;
+
 typedef struct matrix_struct {
     double** matrix;
     int rows;
     int columns;
+    matrix_type_t matrix_type;
 } matrix_t;
 ```
-## Matrix operations
 
-All operations (except matrix comparison) should return the resulting code:
-- 0 - OK
-- 1 - Error, incorrect matrix
-- 2 - Calculation error (mismatched matrix sizes; matrix for which calculations cannot be performed, etc.)
+The matrix_type field defines the matrix type, CORRECT_MATRIX - the correct matrix, INCORRECT_MATRIX - in case of errors in actions with matrices, IDENTITY_MATRIX - a identity matrix, ZERO_MATRIX - a null matrix.
+The filling of the matrix in the case of the INCORRECT_MATRIX type is not defined.
+
+## Matrix operations
 
 ### Creating matrices (create_matrix)
 
 ```c
-int s21_create_matrix(int rows, int columns, matrix_t *result);
+matrix_t s21_create_matrix(int rows, int columns);
 ```
+
+The matrix_type field must be initialized with the ZERO_MATRIX value.
 
 ### Cleaning of matrices (remove_matrix)
 
@@ -168,8 +177,8 @@ The comparison must be up to and including 7 decimal places.
 ### Adding (sum_matrix) and subtracting matrices (sub_matrix)
 
 ```c
-int s21_sum_matrix(matrix_t *A, matrix_t *B, matrix_t *result);
-int s21_sub_matrix(matrix_t *A, matrix_t *B, matrix_t *result);
+matrix_t s21_sum_matrix(matrix_t *A, matrix_t *B);
+matrix_t s21_sub_matrix(matrix_t *A, matrix_t *B);
 ```
 
 The sum of two matrices A = m × n and B = m × n of the same size is a matrix C = m × n = A + B of the same size whose elements are defined by the equations C(i,j) = A(i,j) + B(i,j).
@@ -186,8 +195,8 @@ The difference of two matrices A = m × n and B = m × n of the same size is a m
 ### Matrix multiplication by scalar (mult_number). Multiplication of two matrices (mult_matrix)
 
 ```c
-int s21_mult_number(matrix_t *A, double number, matrix_t *result);
-int s21_mult_matrix(matrix_t *A, matrix_t *B, matrix_t *result);
+matrix_t s21_mult_number(matrix_t *A, double number);
+matrix_t s21_mult_matrix(matrix_t *A, matrix_t *B);
 ```
 
 The product of the matrix A = m × n by the number λ is the matrix B = m × n = λ × A whose elements are defined by the equations B = λ × A(i,j).
@@ -222,7 +231,7 @@ C(3,3) = A(3,1) × B(1,3) + A(3,2) × B(2,3) = 3 × 1 + 6 × 4 = 3 + 24 = 27
 ### Matrix transpose (transpose)
 
 ```c
-int s21_transpose(matrix_t *A, matrix_t *result);
+matrix_t s21_transpose(matrix_t *A);
 ```
 
 The transpose of matrix A is in switching its rows with its columns with their numbers retained
@@ -234,7 +243,7 @@ A = A^T = 2 5 = 4 5 6
 ```
 ### Minor of matrix and matrix of algebraic complements (calc_complements)
 ```c
-int s21_calc_complements(matrix_t *A, matrix_t *result);
+matrix_t s21_calc_complements(matrix_t *A);
 ```
 
 Minor M(i,j) is a (n-1)-order determinant obtained by deleting out the i-th row and the j-th column from the matrix A.
@@ -277,7 +286,7 @@ M. =  4 -14   8
 ### Matrix determinant
 
 ```c
-int s21_determinant(matrix_t *A, double *result);
+double s21_determinant(matrix_t *A);
 ```
 
 The determinant is a number that is associated to each square matrix and calculated from the elements using special formulas. \
@@ -303,7 +312,7 @@ If it is impossible to calculate the determinant of the given matrix, the functi
 ### Inverse of the matrix (inverse_matrix)
 
 ```c
-int s21_inverse_matrix(matrix_t *A, matrix_t *result);
+matrix_t s21_inverse_matrix(matrix_t *A);
 ```
 
 A matrix A to the power of -1 is called the inverse of a square matrix A if the product of these matrices equals the identity matrix.
