@@ -298,8 +298,6 @@ A = 4 5 6
 |A| = 0
 ```
 
-If it is impossible to calculate the determinant of the given matrix, the function must return the value NAN.
-
 ### Inverse of the matrix (inverse_matrix)
 
 ```c
