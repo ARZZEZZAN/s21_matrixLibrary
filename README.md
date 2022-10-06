@@ -349,6 +349,14 @@ The transpose of matrix of algebraic complements:
        -27  29 -24
 ```
 
+The inverse matrix will look like this:
+
+```
+                           1  -1   1
+A^(-1) =  1/|A| * M^T. = -38  41 -34
+                          27 -29  24 
+```
+
 
 # Chapter III
 
