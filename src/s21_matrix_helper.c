@@ -5,14 +5,14 @@
 /// columns
 /// @return успешность выполнения
 int s21_is_Emty(matrix_t *matrix) {
-  int flag = 0;
-  if (matrix != NULL && matrix->matrix != NULL && matrix->rows >= 1 &&
-      matrix->columns >= 1) {
-    flag = 1;
+  int res = 0;
+  if (matrix == NULL || matrix->matrix == NULL || matrix->rows <= 0 ||
+      matrix->columns <= 0) {
+    res = 1;
   } else {
-    flag = 0;
+    res = 0;
   }
-  return flag;
+  return res;
 }
 /// @brief Get matrix
 /// @param row строки

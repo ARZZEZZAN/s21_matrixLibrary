@@ -5,7 +5,7 @@
 /// @return успешность выполнения
 int s21_transpose(matrix_t *A, matrix_t *result) {
   int flag = 0;
-  if (s21_is_Emty(A)) {
+  if (s21_is_Emty(A) == 0) {
     flag = s21_create_matrix(A->columns, A->rows, result);
     if (flag == 0) {
       for (int i = 0; i < A->rows; i++) {
@@ -29,7 +29,7 @@ int s21_transpose(matrix_t *A, matrix_t *result) {
 /// @return успешность выполнения
 int s21_calc_complements(matrix_t *A, matrix_t *result) {
   int flag = 0;
-  if (A != NULL && A->matrix != NULL && A->rows > 0 && A->columns > 0) {
+  if (s21_is_Emty(A) == 0) {
     if (A->rows == A->columns) {
       s21_create_matrix(A->columns, A->rows, result);
       for (int i = 0; i < A->rows; i++) {
@@ -58,7 +58,7 @@ int s21_calc_complements(matrix_t *A, matrix_t *result) {
 int s21_determinant(matrix_t *A, double *result) {
   *result = 0.0;
   int flag = 0;
-  if (A != NULL && A->matrix != NULL && A->rows > 0 && A->columns > 0) {
+  if (s21_is_Emty(A) == 0) {
     if (A->rows == A->columns) {
       *result = s21_get_determinant(A);
     } else {
@@ -96,7 +96,7 @@ double s21_get_determinant(matrix_t *A) {
 /// @return успешность выполнения
 int s21_inverse_matrix(matrix_t *A, matrix_t *result) {
   int flag = 1;
-  if (s21_is_Emty(A)) {
+  if (s21_is_Emty(A) == 0) {
     flag = 2;
     if (A->rows == 1) {
       flag = s21_create_matrix(A->rows, A->rows, result);
